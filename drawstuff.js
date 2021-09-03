@@ -114,7 +114,7 @@ function getInputTriangles(urlName) {
 
     // load the triangles file
     var httpReq = new XMLHttpRequest(); // a new http request
-    httpReq.open("GET",INPUT_TRIANGLES_URL,false); // init the request
+    httpReq.open("GET","triangles.json",false); // init the request
     httpReq.send(null); // send the request
     var startTime = Date.now();
     while ((httpReq.status !== 200) && (httpReq.readyState !== XMLHttpRequest.DONE)) {
@@ -224,7 +224,7 @@ function drawRandPixelsInInputTriangles(context, urlName) {
     var w = context.canvas.width;
     var h = context.canvas.height;
     var imagedata = context.createImageData(w,h);
-    const PIXEL_DENSITY = 1.0;
+    const PIXEL_DENSITY = 15;
     var numCanvasPixels = (w*h)*PIXEL_DENSITY;
 
     if (inputTriangles != String.null) {
@@ -233,7 +233,7 @@ function drawRandPixelsInInputTriangles(context, urlName) {
         var numTrianglePixels = 0; // init num pixels in triangle
         var c = new Color(0,0,0,0); // init the triangle color
         var n = inputTriangles.length; // the number of input files
-        //console.log("number of files: " + n);
+        // console.log("number of files: " + n);
 
         // Loop over the triangles, draw rand pixels in each
         for (var f=0; f<n; f++) {
@@ -362,7 +362,7 @@ function main() {
     //drawInputEllipsoidsUsingArcs(context);
       // shows how to read input file, but not how to draw pixels
 
-    drawRandPixelsInInputTriangles(context, "https://wevanbrown.github.io/NCSUCGProg1/triangles.json");
+    drawRandPixelsInInputTriangles(context, "https://ncsucgclass.github.io/prog1/triangles.json");
     // shows how to draw pixels and read input file
 
     //drawInputTrainglesUsingPaths(context);
